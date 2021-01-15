@@ -1,3 +1,47 @@
 
 @import url(../vendor/normalize.css);
-@import url(../fonts/fonts.css);
+@import url(../vendor/fonts/fonts.css);
+
+@import url(../block/text-ellipsis/text-ellipsis.css);
+
+@import url(../block/body/body.css);
+@import url(../block/page/page.css);
+
+@import url(../block/header/header.css);
+@import url(../block/header/__logo/header__logo.css);
+
+@import url(../block/profile/profile.css);
+@import url(../block/profile/__avatar/profile__avatar.css);
+@import url(../block/profile/__info/profile__info.css);
+@import url(../block/profile/__inner-info/profile__inner-info.css);
+@import url(../block/profile/__title/profile__title.css);
+@import url(../block/profile/__subtitle/profile__subtitle.css);
+@import url(../block/profile/__editBtn/profile__editBtn.css);
+@import url(../block/profile/__addBtn/profile__addBtn.css);
+@import url(../block/popup/__submitBtn/popup__submitBtn.css);
+
+@import url(../block/elements/elements.css);
+@import url(../block/elements/__item/elements__item.css);
+@import url(../block/elements/__image/elements__image.css);
+@import url(../block/elements/__description-likeBtn/__description-likeBtn.css);
+@import url(../block/elements/__description/elements__description.css);
+@import url(../block/elements/__likeBtn/elements__likeBtn.css);
+@import url(../block/elements/__likeBtn/_active/elements__likeBtn_active.css);
+
+@import url(../block/footer/footer.css);
+@import url(../block/footer/__copyright/footer____copyright.css);
+
+@import url(../block/popup/popup.css);
+@import url(../block/popup/_opened/popup_opened.css);
+@import url(../block/popup/__title/popup__title.css);
+@import url(../block/popup/__text/popup__text.css);
+@import url(../block/popup/__text/_type/popup__text_type_title.css);
+@import url(../block/popup/__text/_type/popup__text_type_subtitle.css);
+@import url(../block/popup/__container/popup__container.css);
+@import url(../block/popup/__closeBtn/popup__closeBtn.css);
+
+
+
+
+
+

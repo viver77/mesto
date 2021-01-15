@@ -1,0 +1,26 @@
+
+.profile__editBtn {
+    padding: 0;
+    box-sizing: border-box;
+    background-image: url("../../../images/vector.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    min-width: 24px;
+    height: 24px;
+    background-color: rgba(0, 0, 0, 1);
+    border: 1px solid rgba(255, 255, 255, 1);
+    cursor: pointer;
+
+}
+
+.profile__editBtn:hover {
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 425px){
+    .profile__editBtn {
+        min-width: 18px;
+        height: 18px;
+    }
+}
+

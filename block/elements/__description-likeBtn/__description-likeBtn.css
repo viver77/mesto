@@ -1,0 +1,13 @@
+
+.elements__description-likeBtn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #FFFFFF;
+    max-width: 246px;
+    margin: 0;
+    padding: 25px 15px 31px 21px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
