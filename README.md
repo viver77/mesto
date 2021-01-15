@@ -14,5 +14,5 @@
 
 Верстка осуществлялась по методологии БЭМ (Nested)
 
-[Ссылка на проект](https://viver77.github.io/https://viver77.github.io/mesto/)
+[Ссылка на проект](https://viver77.github.io/mesto/)
 
