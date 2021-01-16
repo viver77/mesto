@@ -6,4 +6,14 @@
     border: none;
     outline: none;
     padding: 0 0 13px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    width: 100%;
+}
+
+.popup__text:first-child {
+    margin-bottom: 30px;
+}
+
+.popup__text:focus {
+    background: #ffe;
 }

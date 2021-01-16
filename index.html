@@ -19,57 +19,59 @@
             <img class="profile__avatar" src="images/avatar.jpg" alt="Жак-Ив Кусто">
             <div class="profile__info">
                 <div class="profile__inner-info">
-                    <h1 class="profile__title text-ellipsis">Жак-Ив Кусто</h1>
-                    <button class="profile__editBtn"></button>
+                    <h1 class="profile__title">Жак-Ив Кусто</h1>
+                    <button class="profile__edit-btn" type="button" aria-label="редактировать профиль"></button>
                 </div>
-                <p class="profile__subtitle text-ellipsis">Исследователь океана</p>
+                <p class="profile__subtitle">Исследователь океана</p>
             </div>
-            <button class="profile__addBtn"></button>
+            <button class="profile__add-btn" type="button" aria-label="добавить картинку"></button>
         </section>
-        <ul class="elements">
-            <li class="elements__item">
-                <img class="elements__image" src="images/1.jpg" alt="Белуга">
-                <div class="elements__description-likeBtn">
-                    <p class="elements__description">Белуга</p>
-                    <button class="elements__likeBtn"></button>
-                </div>
-            </li>
-            <li class="elements__item">
-                <img class="elements__image" src="images/2.jpg" alt="Скат">
-                <div class="elements__description-likeBtn">
-                    <p class="elements__description">Скат</p>
-                    <button class="elements__likeBtn"></button>
-                </div>
-            </li>
-            <li class="elements__item">
-                <img class="elements__image" src="images/3.jpg" alt="Акула молот">
-                <div class="elements__description-likeBtn">
-                    <p class="elements__description">Акула молот</p>
-                    <button class="elements__likeBtn"></button>
-                </div>
-            </li>
-            <li class="elements__item">
-                <img class="elements__image" src="images/4.jpg" alt="Просто акула">
-                <div class="elements__description-likeBtn">
-                    <p class="elements__description">Просто акула</p>
-                    <button class="elements__likeBtn"></button>
-                </div>
-            </li>
-            <li class="elements__item">
-                <img class="elements__image" src="images/5.jpg" alt="Большеглазая песчаная акула">
-                <div class="elements__description-likeBtn">
-                    <p class="elements__description">Большеглазая песчаная акула</p>
-                    <button class="elements__likeBtn"></button>
-                </div>
-            </li>
-            <li class="elements__item">
-                <img class="elements__image" src="images/6.jpg" alt="Галапагосская акула">
-                <div class="elements__description-likeBtn">
-                    <p class="elements__description">Галапагосская акула</p>
-                    <button class="elements__likeBtn"></button>
-                </div>
-            </li>
-        </ul>
+        <section class="images">
+            <ul class="elements">
+                <li class="elements__item">
+                    <img class="elements__image" src="images/1.jpg" alt="Белуга">
+                    <div class="elements__inner">
+                        <h2 class="elements__description">Белуга</h2>
+                        <button class="elements__like-btn" type="button" aria-label="поставить лайк"></button>
+                    </div>
+                </li>
+                <li class="elements__item">
+                    <img class="elements__image" src="images/2.jpg" alt="Скат">
+                    <div class="elements__inner">
+                        <h2 class="elements__description">Скат</h2>
+                        <button class="elements__like-btn" type="button" aria-label="поставить лайк"></button>
+                    </div>
+                </li>
+                <li class="elements__item">
+                    <img class="elements__image" src="images/3.jpg" alt="Акула молот">
+                    <div class="elements__inner">
+                        <h2 class="elements__description">Акула молот</h2>
+                        <button class="elements__like-btn" type="button" aria-label="поставить лайк"></button>
+                    </div>
+                </li>
+                <li class="elements__item">
+                    <img class="elements__image" src="images/4.jpg" alt="Просто акула">
+                    <div class="elements__inner">
+                        <h2 class="elements__description">Просто акула</h2>
+                        <button class="elements__like-btn" type="button" aria-label="поставить лайк"></button>
+                    </div>
+                </li>
+                <li class="elements__item">
+                    <img class="elements__image" src="images/5.jpg" alt="Большеглазая песчаная акула">
+                    <div class="elements__inner">
+                        <h2 class="elements__description">Большеглазая песчаная акула</h2>
+                        <button class="elements__like-btn" type="button" aria-label="поставить лайк"></button>
+                    </div>
+                </li>
+                <li class="elements__item">
+                    <img class="elements__image" src="images/6.jpg" alt="Галапагосская акула">
+                    <div class="elements__inner">
+                        <h2 class="elements__description">Галапагосская акула</h2>
+                        <button class="elements__like-btn" type="button" aria-label="поставить лайк"></button>
+                    </div>
+                </li>
+            </ul>
+        </section>
     </main>
 
     <footer class="footer">
@@ -77,13 +79,15 @@
     </footer>
 
     <div class="popup">
-        <form class="popup__container">
+        <form class="popup__container" name="popup-container">
             <h3 class="popup__title">Редактировать профиль</h3>
-            <input class="popup__text popup__text_type_title" type="text">
-            <input class="popup__text popup__text_type_subtitle" type="text">
-            <button class="popup__submitBtn">Сохранить</button>
+            <fieldset class="popup__fields">
+                <input class="popup__text popup__text_type_title" type="text" name="popup-title" placeholder="Здесь нужно ввести имя" required>
+                <input class="popup__text popup__text_type_subtitle" type="text" name="popup-subtitle" placeholder="Здесь нужно ввести описание" required>
+            </fieldset>
+            <button class="popup__submit-btn" type="submit">Сохранить</button>
+            <button class="popup__close-btn" type="button" aria-label="закрыть форму редактирования профиля"></button>
         </form>
-        <button class="popup__closeBtn"></button>
     </div>
 
 </div>

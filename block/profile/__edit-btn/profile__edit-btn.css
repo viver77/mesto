@@ -1,5 +1,5 @@
 
-.profile__editBtn {
+.profile__edit-btn {
     padding: 0;
     box-sizing: border-box;
     background-image: url("../../../images/vector.svg");
@@ -10,15 +10,15 @@
     background-color: rgba(0, 0, 0, 1);
     border: 1px solid rgba(255, 255, 255, 1);
     cursor: pointer;
-
+    display: flex;
 }
 
-.profile__editBtn:hover {
+.profile__edit-btn:hover {
     opacity: 0.6;
 }
 
 @media screen and (max-width: 425px){
-    .profile__editBtn {
+    .profile__edit-btn {
         min-width: 18px;
         height: 18px;
     }

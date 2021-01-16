@@ -1,45 +1,46 @@
 
-let content = document.querySelector(".content");
+let popup = document.querySelector('.popup');
 
-// Открыть и заполнить карточку профиля
-let editBtn =  content.querySelector(".profile__editBtn")
-editBtn.addEventListener("click", editProfileInfo);
+let profileTitle = document.querySelector('.profile__title');
+let profileSubTitle = document.querySelector('.profile__subtitle');
+
+let popupTitle   = document.querySelector('.popup__text_type_title');
+let popupSubTitle   = document.querySelector('.popup__text_type_subtitle');
+
+let editBtn =  document.querySelector(".profile__edit-btn");
+
+//------- Заполнить и открыть карточку профиля --------------//
+
 function editProfileInfo() {
 
-    let popup = document.querySelector('.popup');
-    popup.classList.add("popup_opened");
-
-    // Заголовок
-    let profileTitle = document.querySelector('.profile__title');
-    let popupTitle   = document.querySelector('.popup__text_type_title');
     popupTitle.value = profileTitle.textContent;
-
-    // Подзаголовок
-    let profileSubTitle = document.querySelector('.profile__subtitle');
-    let popupSubTitle   = document.querySelector('.popup__text_type_subtitle');
     popupSubTitle.value = profileSubTitle.textContent;
+
+    popup.classList.add("popup_opened");
 
 }
 
-// Закрыть карточку профиля
-let popup__closeBtn = document.querySelector(".popup__closeBtn")
-popup__closeBtn.addEventListener("click", closePopup);
+editBtn.addEventListener("click", editProfileInfo);
+
+
+//-------Закрыть карточку профиля-------------------------------//
+
+let popup__closeBtn = document.querySelector(".popup__close-btn")
+
 function closePopup() {
-    let popup = document.querySelector('.popup');
+
     popup.classList.remove("popup_opened");
 }
 
-// Отправить данных на сервер
+popup__closeBtn.addEventListener("click", closePopup);
+
+
+//-------Отправить данные на сервер-----------------------------//
+
 let formElement = document.querySelector(".popup__container");
 
 function handleFormSubmit (evt) {
-        evt.preventDefault();
-
-    let popupTitle   = document.querySelector(".popup__text_type_title");
-    let popupSubTitle   = document.querySelector(".popup__text_type_subtitle");
-
-    let profileTitle = document.querySelector(".profile__title");
-    let profileSubTitle = document.querySelector(".profile__subtitle");
+    evt.preventDefault();
 
     profileTitle.textContent = popupTitle.value;
     profileSubTitle.textContent = popupSubTitle.value;
@@ -49,17 +50,3 @@ function handleFormSubmit (evt) {
 
 formElement.addEventListener('submit', handleFormSubmit);
 
-// Установка/Снятие лайка
-let elements =  document.querySelector(".elements")
-elements.addEventListener("click", editlikeBtn);
-function editlikeBtn(obj) {
-
-    if (obj.target.classList.contains("elements__likeBtn")) {
-        obj.target.classList.toggle("elements__likeBtn_active");
-    }
-}
-
-//Добавить микс, многоточие для текста
-document.querySelectorAll(".elements__description").forEach(function (e) {
-    e.classList.add("text-ellipsis");
-});
