@@ -1,5 +1,5 @@
 
-.elements__like-btn {
+.card__like {
     background-image: url("../../../images/like-disabled.svg");
     background-repeat: no-repeat;
     background-position: center;
@@ -15,6 +15,6 @@
 
 }
 
-.elements__like-btn:hover {
+.card__like:hover {
     opacity: 0.5;
 }

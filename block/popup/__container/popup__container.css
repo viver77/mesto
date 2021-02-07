@@ -10,6 +10,7 @@
     border-radius: 10px;
     box-sizing: border-box;
     max-width: 430px;
+
 }
 
 @media screen and (max-width: 425px){

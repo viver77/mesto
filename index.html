@@ -28,48 +28,6 @@
         </section>
         <section class="images">
             <ul class="elements">
-                <li class="elements__item">
-                    <img class="elements__image" src="images/1.jpg" alt="Белуга">
-                    <div class="elements__inner">
-                        <h2 class="elements__description">Белуга</h2>
-                        <button class="elements__like-btn" type="button" aria-label="поставить лайк"></button>
-                    </div>
-                </li>
-                <li class="elements__item">
-                    <img class="elements__image" src="images/2.jpg" alt="Скат">
-                    <div class="elements__inner">
-                        <h2 class="elements__description">Скат</h2>
-                        <button class="elements__like-btn" type="button" aria-label="поставить лайк"></button>
-                    </div>
-                </li>
-                <li class="elements__item">
-                    <img class="elements__image" src="images/3.jpg" alt="Акула молот">
-                    <div class="elements__inner">
-                        <h2 class="elements__description">Акула молот</h2>
-                        <button class="elements__like-btn" type="button" aria-label="поставить лайк"></button>
-                    </div>
-                </li>
-                <li class="elements__item">
-                    <img class="elements__image" src="images/4.jpg" alt="Просто акула">
-                    <div class="elements__inner">
-                        <h2 class="elements__description">Просто акула</h2>
-                        <button class="elements__like-btn" type="button" aria-label="поставить лайк"></button>
-                    </div>
-                </li>
-                <li class="elements__item">
-                    <img class="elements__image" src="images/5.jpg" alt="Большеглазая песчаная акула">
-                    <div class="elements__inner">
-                        <h2 class="elements__description">Большеглазая песчаная акула</h2>
-                        <button class="elements__like-btn" type="button" aria-label="поставить лайк"></button>
-                    </div>
-                </li>
-                <li class="elements__item">
-                    <img class="elements__image" src="images/6.jpg" alt="Галапагосская акула">
-                    <div class="elements__inner">
-                        <h2 class="elements__description">Галапагосская акула</h2>
-                        <button class="elements__like-btn" type="button" aria-label="поставить лайк"></button>
-                    </div>
-                </li>
             </ul>
         </section>
     </main>
@@ -80,15 +38,34 @@
 
     <div class="popup">
         <form class="popup__container" name="popup-container">
-            <h3 class="popup__title">Редактировать профиль</h3>
+            <h3 class="popup__title">#</h3>
             <fieldset class="popup__fields">
-                <input class="popup__text popup__text_type_title" type="text" name="popup-title" placeholder="Здесь нужно ввести имя" required>
-                <input class="popup__text popup__text_type_subtitle" type="text" name="popup-subtitle" placeholder="Здесь нужно ввести описание" required>
+                <input class="popup__text popup__text_type_title" type="text" name="popup-title" placeholder="" required>
+                <input class="popup__text popup__text_type_subtitle" type="text" name="popup-subtitle" placeholder="" required>
             </fieldset>
-            <button class="popup__submit-btn" type="submit">Сохранить</button>
-            <button class="popup__close-btn" type="button" aria-label="закрыть форму редактирования профиля"></button>
+            <button class="popup__submit-btn" type="submit"></button>
+            <button class="popup__close-btn" type="button" aria-label="закрыть форму редактирования"></button>
         </form>
     </div>
+
+    <div class="popup popup-image">
+        <figure class="popup-image__figure">
+            <img class="popup-image__image" src="#" alt="#">
+            <figcaption class="popup-image__figcaption"></figcaption>
+            <button class="popup__close-btn" type="button" aria-label="закрыть форму картинки"></button>
+        </figure>
+    </div>
+
+    <template id="card">
+        <li class="elements__item card">
+            <button class="card__trash" type="button" aria-label="удалить карточку"></button>
+            <img class="card__image" src="#" alt="#">
+            <div class="card__inner">
+                <h2 class="card__description"></h2>
+                <button class="card__like" type="button" aria-label="поставить лайк"></button>
+            </div>
+        </li>
+    </template>
 
 </div>
 <script src="pages/index.js"></script>
