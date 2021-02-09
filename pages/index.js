@@ -55,7 +55,7 @@ function openPopup(popup) {
     popup.classList.add('popup_opened')
 }
 
-function getNewCard(item) {
+function createNewCard(item) {
 
     const newCard = cardTemplate.content.cloneNode(true)
     const cardImage = newCard.querySelector('.card__image')
@@ -88,7 +88,7 @@ function getNewCard(item) {
 //-------Инициализация данных-------------------------------------//
 
 initialCards.forEach(item => {
-    elements.append(getNewCard(item))
+    elements.append(createNewCard(item))
 })
 
 //------- Обработчики событий форм------------------------------//
@@ -108,7 +108,7 @@ formAdd.addEventListener('submit', evt => {
     const formTitle = evt.currentTarget.querySelector('.form__text_type_title')
     const formSubtitle = evt.currentTarget.querySelector('.form__text_type_subtitle')
 
-    elements.prepend(getNewCard(
+    elements.prepend(createNewCard(
         {
             name: formTitle.value,
             link: formSubtitle.value
