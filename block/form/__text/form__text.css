@@ -1,5 +1,5 @@
 
-.popup__text {
+.form__text {
     font-weight: 400;
     font-size: 14px;
     line-height: 1.21;
@@ -10,10 +10,10 @@
     width: 100%;
 }
 
-.popup__text:first-child {
+.form__text:first-child {
     margin-bottom: 30px;
 }
 
-.popup__text:focus {
+.form__text:focus {
     background: #ffe;
 }

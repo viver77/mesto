@@ -1,10 +1,10 @@
 
 .popup {
-    display: flex;
     visibility: hidden;
     opacity: 0;
     transition: visibility 300ms, opacity 300ms ease-in;
 
+    display: flex;
     position: fixed;
     top: 0;
     left: 0;

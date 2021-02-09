@@ -26,7 +26,7 @@
             </div>
             <button class="profile__add-btn" type="button" aria-label="добавить картинку"></button>
         </section>
-        <section class="images">
+        <section class="images" aria-label="Картинки">
             <ul class="elements">
             </ul>
         </section>
@@ -36,27 +36,49 @@
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
 
-    <div class="popup">
-        <form class="popup__container" name="popup-container">
-            <h3 class="popup__title">#</h3>
-            <fieldset class="popup__fields">
-                <input class="popup__text popup__text_type_title" type="text" name="popup-title" placeholder="" required>
-                <input class="popup__text popup__text_type_subtitle" type="text" name="popup-subtitle" placeholder="" required>
-            </fieldset>
-            <button class="popup__submit-btn" type="submit"></button>
+    <div class="popup popup-edit">
+        <div class="popup__container">
+            <form class="form form-edit" name="form-edit">
+                <h3 class="form__title">Редактировать профиль</h3>
+                <fieldset class="form__fields">
+                    <input class="form__text form__text_type_title" type="text" name="popup-title"
+                           placeholder="Здесь нужно ввести имя" required>
+                    <input class="form__text form__text_type_subtitle" type="text" name="popup-subtitle"
+                           placeholder="Здесь нужно ввести описание" required>
+                </fieldset>
+                <button class="form__submit-btn" type="submit">Сохранить</button>
+            </form>
             <button class="popup__close-btn" type="button" aria-label="закрыть форму редактирования"></button>
-        </form>
+        </div>
+    </div>
+
+    <div class="popup popup-add">
+        <div class="popup__container">
+            <form class="form form-add" name="form-add">
+                <h3 class="form__title">Новое место</h3>
+                <fieldset class="form__fields">
+                    <input class="form__text form__text_type_title" type="text" name="popup-title"
+                           placeholder="Название" required>
+                    <input class="form__text form__text_type_subtitle" type="text" name="popup-subtitle"
+                           placeholder="Ссылка на картинку" required>
+                </fieldset>
+                <button class="form__submit-btn" type="submit">Создать</button>
+            </form>
+            <button class="popup__close-btn" type="button" aria-label="закрыть форму редактирования"></button>
+        </div>
     </div>
 
     <div class="popup popup-image">
-        <figure class="popup-image__figure">
-            <img class="popup-image__image" src="#" alt="#">
-            <figcaption class="popup-image__figcaption"></figcaption>
+        <div class="popup-image__inner">
+            <figure class="popup-image__figure">
+                <img class="popup-image__image" src="#" alt="#">
+                <figcaption class="popup-image__figcaption"></figcaption>
+            </figure>
             <button class="popup__close-btn" type="button" aria-label="закрыть форму картинки"></button>
-        </figure>
+        </div>
     </div>
 
-    <template id="card">
+    <template class="template-card">
         <li class="elements__item card">
             <button class="card__trash" type="button" aria-label="удалить карточку"></button>
             <img class="card__image" src="#" alt="#">
