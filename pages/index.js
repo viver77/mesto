@@ -1,10 +1,8 @@
 
-//-------Область объявления переменных-------------------------------------//
-
 const profileTitle = document.querySelector('.profile__title')
 const profileSubTitle = document.querySelector('.profile__subtitle')
-const formTitle   = document.querySelector('.form__text_type_title')
-const formSubTitle   = document.querySelector('.form__text_type_subtitle')
+const formTitle   = document.querySelector('.form__input_type_title')
+const formSubTitle   = document.querySelector('.form__input_type_subtitle')
 const editBtn =  document.querySelector('.profile__edit-btn')
 const addBtn = document.querySelector('.profile__add-btn')
 const popupCloseBtn = document.querySelectorAll('.popup__close-btn')
@@ -45,13 +43,50 @@ const initialCards = [
     }
 ]
 
-//-------Область объявления функций-------------------------------------//
+//--------------------------------------------//
+
+const removeEventListeners = () => {
+    document.removeEventListener('keydown', handleKeydownClose)
+}
 
 function closePopup(popup) {
+
     popup.classList.remove('popup_opened')
+
+    const formElement = popup.querySelector('.form')
+    const inputList = Array.from(formElement.querySelectorAll('.form__input'))
+    inputList.forEach((inputElement) => {
+        hideInputError(formElement, inputElement,  {inputErrorClass: 'form__input_type_error',
+            errorClass: 'form__input-error_active'})
+
+        inputElement.value = ''
+    })
+
+    removeEventListeners()
+}
+
+const handleKeydownClose = (evt, popup) => {
+    if (evt.key === 'Escape') {
+        closePopup(popup)
+    }
 }
 
 function openPopup(popup) {
+
+    if (!popup.classList.contains('popup-image')) {
+        const formElement = popup.querySelector('.form')
+        const inputList = Array.from(formElement.querySelectorAll('.form__input'))
+        const buttonElement = formElement.querySelector('.form__submit')
+        toggleButtonState(inputList, buttonElement, {inactiveButtonClass: 'form__submit_inactive'})
+    }
+
+    popup.addEventListener('mousedown', evt => {
+        if (evt.target.classList.contains('popup_opened')) {
+            closePopup(popup)}
+    })
+
+    document.addEventListener('keydown', (evt) => handleKeydownClose(evt, popup))
+
     popup.classList.add('popup_opened')
 }
 
@@ -85,28 +120,36 @@ function createNewCard(item) {
     return newCard
 }
 
-//-------Инициализация данных-------------------------------------//
+//--------------------------------------------//
 
 initialCards.forEach(item => {
     elements.append(createNewCard(item))
 })
 
-//------- Обработчики событий форм------------------------------//
+//--------------------------------------------//
 
 formEdit.addEventListener('submit', evt => {
     evt.preventDefault();
 
-    profileTitle.textContent = evt.currentTarget.querySelector('.form__text_type_title').value
-    profileSubTitle.textContent = evt.currentTarget.querySelector('.form__text_type_subtitle').value
+    if (hasInvalidInput(Array.from(formEdit.querySelectorAll('.form__input')))) {
+        return
+    }
+
+    profileTitle.textContent = evt.currentTarget.querySelector('.form__input_type_title').value
+    profileSubTitle.textContent = evt.currentTarget.querySelector('.form__input_type_subtitle').value
 
     closePopup(popupEdit);
-});
+})
 
 formAdd.addEventListener('submit', evt => {
     evt.preventDefault();
 
-    const formTitle = evt.currentTarget.querySelector('.form__text_type_title')
-    const formSubtitle = evt.currentTarget.querySelector('.form__text_type_subtitle')
+    if (hasInvalidInput(Array.from(formAdd.querySelectorAll('.form__input')))) {
+        return
+    }
+
+    const formTitle = evt.currentTarget.querySelector('.form__input_type_title')
+    const formSubtitle = evt.currentTarget.querySelector('.form__input_type_subtitle')
 
     elements.prepend(createNewCard(
         {
@@ -122,7 +165,8 @@ formAdd.addEventListener('submit', evt => {
 
 });
 
-//------- Обработчики событий кнопок------------------------------//
+//------------------------------------------------------//
+
 editBtn.addEventListener("click", () => {
 
     formTitle.value = profileTitle.textContent
@@ -140,3 +184,4 @@ popupCloseBtn.forEach(item => {
         closePopup(evt.currentTarget.parentElement.parentElement)
     })
 })
+

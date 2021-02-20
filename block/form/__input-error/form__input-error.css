@@ -1,0 +1,14 @@
+
+.form__input-error {
+    visibility: hidden;
+    color: rgba(255, 0, 0, 1);
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 1.25;
+    position: absolute;
+    left: 0;
+    top: 35px;
+    /*top: calc(100% + 5px);*/
+
+    transition: visibility 0.3s;
+}

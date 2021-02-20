@@ -1,6 +1,6 @@
 
-.form__submit-btn {
-
+.form__submit {
+    box-sizing: border-box;
     padding: 14px 18px;
     width: 100%;
     background-color: rgba(0, 0, 0, 1);
@@ -11,17 +11,17 @@
     color: #FFFFFF;
     margin: 0 auto 37px;
     cursor: pointer;
-    border: none;
     border-radius: 2px;
+    border: 1px solid transparent;
 }
 
-.form__submit-btn:hover {
+.form__submit:hover {
     opacity: 0.8;
 }
 
 @media screen and (max-width: 425px){
 
-    .form__submit-btn {
+    .form__submit {
         font-size: 14px;
         padding: 14px 82px;
     }

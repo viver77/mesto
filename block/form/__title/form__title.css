@@ -5,15 +5,13 @@
     line-height: 1.21;
     letter-spacing: 0;
     text-align: left;
-    margin-top: 34px;
+    margin-top: 0;
     margin-bottom: 54px;
 }
 
 @media screen and (max-width: 425px){
     .form__title {
         font-size: 18px;
-        margin-top: 25px;
         margin-bottom: 75px;
-
     }
 }
