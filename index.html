@@ -43,18 +43,18 @@
                 <fieldset class="form__fields">
                     <label class="form__field">
                         <input id="form-edit-title-input" class="form__input form__input_type_title" type="text"
-                               name="popup-title" placeholder="Имя" required minlength="2"
+                               name="inputTitle" placeholder="Имя" required minlength="2"
                                maxlength="40">
                         <span class="form__input-error form-edit-title-input-error"></span>
                     </label>
                     <label class="form__field">
                         <input id="form-edit-subtitle-input" class="form__input form__input_type_subtitle" type="text"
-                               name="popup-subtitle"
+                               name="inputSubTitle"
                                placeholder="Описание" required minlength="2" maxlength="200">
                         <span class="form__input-error form-edit-subtitle-input-error"></span>
                     </label>
                 </fieldset>
-                <button class="form__submit" type="submit">Сохранить</button>
+                <button class="form__submit" type="submit" name="formSubmit">Сохранить</button>
             </form>
             <button class="popup__close-btn" type="button" aria-label="закрыть форму редактирования"></button>
         </div>
@@ -67,18 +67,18 @@
                 <fieldset class="form__fields">
                     <label class="form__field">
                         <input id="form-add-title-input" class="form__input form__input_type_title" type="text"
-                               name="popup-title"
+                               name="inputTitle"
                                placeholder="Название" required minlength="2" maxlength="30">
                         <span class="form__input-error form-add-title-input-error"></span>
                     </label>
                     <label class="form__field">
                         <input id="form-add-subtitle-input" class="form__input form__input_type_subtitle" type="url"
-                               name="popup-subtitle"
+                               name="inputSubTitle"
                                placeholder="Ссылка на картинку" required>
                         <span class="form__input-error form-add-subtitle-input-error"></span>
                     </label>
                 </fieldset>
-                <button class="form__submit" type="submit">Создать</button>
+                <button class="form__submit" type="submit" name="formSubmit">Создать</button>
             </form>
             <button class="popup__close-btn" type="button" aria-label="закрыть форму редактирования"></button>
         </div>

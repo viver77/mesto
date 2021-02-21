@@ -8,7 +8,4 @@
     position: absolute;
     left: 0;
     top: 35px;
-    /*top: calc(100% + 5px);*/
-
-    transition: visibility 0.3s;
 }

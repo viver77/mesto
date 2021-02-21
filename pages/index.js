@@ -1,11 +1,8 @@
 
 const profileTitle = document.querySelector('.profile__title')
 const profileSubTitle = document.querySelector('.profile__subtitle')
-const formTitle   = document.querySelector('.form__input_type_title')
-const formSubTitle   = document.querySelector('.form__input_type_subtitle')
 const editBtn =  document.querySelector('.profile__edit-btn')
 const addBtn = document.querySelector('.profile__add-btn')
-const popupCloseBtn = document.querySelectorAll('.popup__close-btn')
 const elements = document.querySelector('.elements')
 const cardTemplate = document.querySelector('.template-card')
 const popupImage = document.querySelector('.popup-image')
@@ -15,6 +12,7 @@ const popupEdit = document.querySelector('.popup-edit')
 const popupAdd = document.querySelector('.popup-add')
 const formEdit = document.querySelector('.form-edit')
 const formAdd = document.querySelector('.form-add')
+const popups = document.querySelectorAll('.popup')
 
 const initialCards = [
     {
@@ -45,49 +43,23 @@ const initialCards = [
 
 //--------------------------------------------//
 
-const removeEventListeners = () => {
-    document.removeEventListener('keydown', handleKeydownClose)
-}
-
-function closePopup(popup) {
-
-    popup.classList.remove('popup_opened')
-
-    const formElement = popup.querySelector('.form')
-    const inputList = Array.from(formElement.querySelectorAll('.form__input'))
-    inputList.forEach((inputElement) => {
-        hideInputError(formElement, inputElement,  {inputErrorClass: 'form__input_type_error',
-            errorClass: 'form__input-error_active'})
-
-        inputElement.value = ''
-    })
-
-    removeEventListeners()
-}
-
-const handleKeydownClose = (evt, popup) => {
+function closeByEscape(evt) {
     if (evt.key === 'Escape') {
-        closePopup(popup)
+        const openedPopup = document.querySelector('.popup_opened')
+        closePopup(openedPopup);
     }
 }
 
 function openPopup(popup) {
 
-    if (!popup.classList.contains('popup-image')) {
-        const formElement = popup.querySelector('.form')
-        const inputList = Array.from(formElement.querySelectorAll('.form__input'))
-        const buttonElement = formElement.querySelector('.form__submit')
-        toggleButtonState(inputList, buttonElement, {inactiveButtonClass: 'form__submit_inactive'})
-    }
-
-    popup.addEventListener('mousedown', evt => {
-        if (evt.target.classList.contains('popup_opened')) {
-            closePopup(popup)}
-    })
-
-    document.addEventListener('keydown', (evt) => handleKeydownClose(evt, popup))
-
+    document.addEventListener('keydown', closeByEscape);
     popup.classList.add('popup_opened')
+}
+
+function closePopup(popup) {
+
+    document.removeEventListener('keydown', closeByEscape)
+    popup.classList.remove('popup_opened')
 }
 
 function createNewCard(item) {
@@ -108,17 +80,18 @@ function createNewCard(item) {
         evt.currentTarget.parentElement.remove()
     })
 
-    cardImage.addEventListener('click', evt => {
+    cardImage.addEventListener('click', () => {
 
-        popupImageImage.src = evt.currentTarget.src
-        popupImageImage.alt = evt.currentTarget.alt
-        popupImageFigcaption.textContent = evt.currentTarget.alt
+        popupImageImage.src = item.link
+        popupImageImage.alt = item.name
+        popupImageFigcaption.textContent = item.name
 
         openPopup(popupImage)
     })
 
     return newCard
 }
+
 
 //--------------------------------------------//
 
@@ -128,60 +101,69 @@ initialCards.forEach(item => {
 
 //--------------------------------------------//
 
-formEdit.addEventListener('submit', evt => {
-    evt.preventDefault();
+function handleFormSubmit (evt) {
 
-    if (hasInvalidInput(Array.from(formEdit.querySelectorAll('.form__input')))) {
-        return
+    const form = evt.target.closest('.form')
+
+    if (form.name === 'form-edit') {
+        profileTitle.textContent = form.elements.inputTitle.value
+        profileSubTitle.textContent = form.elements.inputSubTitle.value
     }
 
-    profileTitle.textContent = evt.currentTarget.querySelector('.form__input_type_title').value
-    profileSubTitle.textContent = evt.currentTarget.querySelector('.form__input_type_subtitle').value
-
-    closePopup(popupEdit);
-})
-
-formAdd.addEventListener('submit', evt => {
-    evt.preventDefault();
-
-    if (hasInvalidInput(Array.from(formAdd.querySelectorAll('.form__input')))) {
-        return
+    if (form.name === 'form-add') {
+        elements.prepend(createNewCard(
+            {
+                name: form.elements.inputTitle.value,
+                link: form.elements.inputSubTitle.value
+            }
+        ))
     }
 
-    const formTitle = evt.currentTarget.querySelector('.form__input_type_title')
-    const formSubtitle = evt.currentTarget.querySelector('.form__input_type_subtitle')
+    closePopup(evt.target.closest('.popup'));
 
-    elements.prepend(createNewCard(
-        {
-            name: formTitle.value,
-            link: formSubtitle.value
-        }
-    ))
-
-    closePopup(popupAdd);
-
-    formTitle.value = ''
-    formSubtitle.value = ''
-
-});
+}
 
 //------------------------------------------------------//
 
+function hideInputErrors (popup) {
+
+    const formElement = popup.querySelector('.form')
+    const inputList = Array.from(formElement.querySelectorAll('.form__input'))
+
+    inputList.forEach((inputElement) => {
+        hideInputError(formElement, inputElement,  {inputErrorClass: 'form__input_type_error',
+            errorClass: 'form__input-error_active'})
+
+        inputElement.value = ''
+    })
+}
+
 editBtn.addEventListener("click", () => {
 
-    formTitle.value = profileTitle.textContent
-    formSubTitle.value = profileSubTitle.textContent
+    formEdit.elements.formSubmit.classList.remove('form__submit_inactive')
+    hideInputErrors (popupEdit)
+
+    formEdit.elements.inputTitle.value = profileTitle.textContent
+    formEdit.elements.inputSubTitle.value = profileSubTitle.textContent
 
     openPopup(popupEdit);
 })
 
-addBtn.addEventListener('click', evt => {
+addBtn.addEventListener('click', () => {
+
+    formAdd.elements.formSubmit.classList.add('form__submit_inactive')
+    hideInputErrors (popupAdd)
     openPopup(popupAdd);
 })
 
-popupCloseBtn.forEach(item => {
-    item.addEventListener('click', evt => {
-        closePopup(evt.currentTarget.parentElement.parentElement)
+popups.forEach((popup) => {
+    popup.addEventListener('mousedown', (evt) => {
+
+        if (evt.target.classList.contains('popup_opened')) {
+            closePopup(popup)
+        }
+        if (evt.target.classList.contains('popup__close-btn')) {
+            closePopup(popup)
+        }
     })
 })
-
