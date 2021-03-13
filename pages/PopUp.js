@@ -5,7 +5,7 @@ export default class PopUp {
     }
 
     openPopup() {
-        document.addEventListener('keydown', this._closeByEscape);
+        document.addEventListener('keydown', (evt) => this._closeByEscape(evt));
 
         if (!this._popup.classList.contains('popup-image')) {
             this._hideInputErrors()
@@ -14,7 +14,7 @@ export default class PopUp {
     }
 
     closePopup() {
-        document.removeEventListener('keydown', this._closeByEscape)
+        document.removeEventListener('keydown', () => this._closeByEscape)
         this._popup.classList.remove('popup_opened')
     }
 
