@@ -5,11 +5,7 @@ export default class PopUp {
     }
 
     openPopup() {
-        document.addEventListener('keydown', (evt) => this._closeByEscape(evt));
-
-        if (!this._popup.classList.contains('popup-image')) {
-            this._hideInputErrors()
-        }
+        this._setEventListeners()
         this._popup.classList.add('popup_opened')
     }
 
@@ -20,23 +16,20 @@ export default class PopUp {
 
     _closeByEscape(evt) {
         if (evt.key === 'Escape') {
-            const openedPopup = document.querySelector('.popup_opened')
-            this.closePopup(openedPopup)
+            this.closePopup()
         }
     }
 
-    _hideInputErrors() {
-        const form = this._popup.querySelector('.form')
-        const inputList = Array.from(form.querySelectorAll('.form__input'))
-
-        inputList.forEach((inputElement) => {
-            inputElement.classList.remove('form__input_type_error')
-            const errorElement = form.querySelector(`.${inputElement.id}-error`)
-            errorElement.classList.remove('form__input-error_active')
-
-            if (form.name === 'form-add') {
-                inputElement.value = ''
+    _setEventListeners() {
+        this._popup.addEventListener('mousedown', evt => {
+            if (evt.target.classList.contains('popup__close-btn')) {
+                this.closePopup()
+            }
+            if (evt.target.classList.contains('popup_opened')) {
+                this.closePopup()
             }
         })
+
+        document.addEventListener('keydown', (evt) => this._closeByEscape(evt));
     }
 }

@@ -1,10 +1,14 @@
 
+const popup = document.querySelector('.popup-image')
+const popupImage = popup.querySelector('.popup-image__image')
+const popupFigcaption = popup.querySelector('.popup-image__figcaption')
+
+
 export default class Card {
-    constructor(data, cardSelector, Popup) {
+    constructor(data, cardSelector) {
         this._cardSelector = cardSelector
         this._image = data.link
         this._description = data.name
-        this._Popup = Popup
     }
 
     _getTemplate() {
@@ -13,10 +17,12 @@ export default class Card {
 
     generateCard() {
         this._element = this._getTemplate()
-        this._element.querySelector('.card__image').src = this._image
-        this._element.querySelector('.card__image').alt = this._description
-        this._element.querySelector('.card__description').textContent = this._description
 
+        const cardImage = this._element.querySelector('.card__image')
+        cardImage.src = this._image
+        cardImage.alt = this._description
+
+        this._element.querySelector('.card__description').textContent = this._description
         this._setEventListeners()
 
         return this._element
@@ -46,14 +52,35 @@ export default class Card {
 
     _handleMessageClickImage() {
 
-        const popup = document.querySelector('.popup-image')
-        const popupImage = popup.querySelector('.popup-image__image')
-        const popupFigcaption = popup.querySelector('.popup-image__figcaption')
-
         popupImage.src = this._image
         popupImage.alt = this._description
         popupFigcaption.textContent = this._description
 
-        this._Popup.openPopup()
+        popup.addEventListener('mousedown', evt => {
+            if (evt.target.classList.contains('popup__close-btn')) {
+                closePopup()
+            }
+            if (evt.target.classList.contains('popup_opened')) {
+                closePopup()
+            }
+        })
+
+        openPopup()
     }
+}
+
+function closeByEscape(evt) {
+    if (evt.key === 'Escape') {
+        closePopup()
+    }
+}
+
+function openPopup() {
+    document.addEventListener('keydown', (evt) => closeByEscape(evt));
+    popup.classList.add('popup_opened')
+}
+
+function closePopup() {
+    document.removeEventListener('keydown', (evt) => closeByEscape(evt))
+    popup.classList.remove('popup_opened')
 }
